@@ -5,18 +5,7 @@ import Card from "./components/Card";
 import data from "./data";
 
 function App() {
-  let cardElements = data.map((x) => (
-    <Card
-      key={x.id}
-      img={x.coverImg}
-      rating={x.stats.rating}
-      reviewCount={x.stats.reviewCount}
-      location={x.location}
-      title={x.title}
-      price={x.price}
-      openSpots={x.openSpots}
-    />
-  ));
+  let cardElements = data.map((item) => <Card key={item.id} item={item} />);
 
   return (
     <div>

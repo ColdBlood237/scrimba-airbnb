@@ -1,19 +1,12 @@
 /* eslint-disable react/prop-types */
-import star from "../../public/images/star.png";
+import star from "../assets/star.png";
 
-export default function Card({
-  img,
-  rating,
-  reviewCount,
-  location,
-  title,
-  price,
-  openSpots,
-}) {
+export default function Card({ item }) {
   let badgeText;
-  if (openSpots === 0) {
+  console.log(item);
+  if (item.openSpots === 0) {
     badgeText = "SOLD OUT";
-  } else if (location === "Online") {
+  } else if (item.location === "Online") {
     badgeText = "ONLINE";
   }
 
@@ -22,19 +15,19 @@ export default function Card({
       {badgeText && <div className="card-badge">{badgeText}</div>}
       <img
         className="activity-picture"
-        src={`../public/images/${img}`}
+        src={`../../public/images/${item.coverImg}`}
         alt="experience"
       />
       <p className="activity-info">
         <img className="star-icon" src={star} alt="star" />
-        <span className="rating">{rating} </span>
+        <span className="rating">{item.stats.rating} </span>
         <span className="country">
-          ({reviewCount}) • {location}
+          ({item.stats.reviewCount}) • {item.location}
         </span>
       </p>
-      <h2 className="activity-title">{title}</h2>
+      <h2 className="activity-title">{item.title}</h2>
       <p className="activity-price">
-        <b>From ${price} / </b>person
+        <b>From ${item.price} / </b>person
       </p>
     </div>
   );
